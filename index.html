@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Classroom Random Picker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="top-header">
+        <div>
+            <h1>Classroom Learning Center</h1>
+            <p>Random Student Picker & Vocabulary Games</p>
+        </div>
+    </header>
+
+    <main class="main-layout">
+
+        <!-- LEFT: STUDENT PICKER -->
+        <section class="student-panel">
+
+            <div class="section-heading">
+                <span class="section-icon">👨‍🎓</span>
+                <h2>Student Picker</h2>
+                <p>Who's the lucky student today?</p>
+            </div>
+
+            <div class="student-display" id="studentResult">
+                <span>?</span>
+            </div>
+
+            <button
+                id="studentButton"
+                class="student-button"
+                disabled
+            >
+                Pick a Student
+            </button>
+
+            <div class="student-info">
+                <span id="studentCount">Loading students...</span>
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT: GAME AREA -->
+        <section class="game-panel">
+
+            <div class="game-header">
+
+                <div>
+                    <h2>Vocabulary Games</h2>
+                    <p>Choose a game and start learning!</p>
+                </div>
+
+                <div class="game-controls">
+                    <label class="auto-play-toggle" for="autoPlayToggle">
+                        <span class="auto-play-label">Auto Play</span>
+                        <span class="toggle-switch">
+                            <input type="checkbox" id="autoPlayToggle" disabled>
+                            <span class="toggle-slider"></span>
+                        </span>
+                    </label>
+
+                    <div class="game-selector">
+                        <label for="gameMode">Select Game</label>
+
+                        <select id="gameMode">
+                        <option value="guess">
+                            Guess the Meanings
+                        </option>
+
+                        <option value="match">
+                            Matching Game
+                        </option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- GAME 1: GUESS THE MEANINGS -->
+
+            <div id="guessGame" class="game-content">
+
+                <div class="game-instructions">
+                    <h3>📝 Guess the Meanings</h3>
+                    <p>
+                        Look at the three English words.
+                        Can you guess their Chinese meanings?
+                    </p>
+                </div>
+
+                <div id="wordResults" class="guess-word-list">
+
+                    <div class="guess-card">
+                        <span class="word-number">01</span>
+                        <span class="guess-word">?</span>
+                        <span class="guess-meaning"></span>
+                    </div>
+
+                    <div class="guess-card">
+                        <span class="word-number">02</span>
+                        <span class="guess-word">?</span>
+                        <span class="guess-meaning"></span>
+                    </div>
+
+                    <div class="guess-card">
+                        <span class="word-number">03</span>
+                        <span class="guess-word">?</span>
+                        <span class="guess-meaning"></span>
+                    </div>
+
+                </div>
+
+                <div class="game-buttons">
+
+                    <button
+                        id="vocabularyButton"
+                        class="primary-button"
+                        disabled
+                    >
+                        Choose Three Words
+                    </button>
+
+                    <button
+                        id="meaningButton"
+                        class="secondary-button"
+                        disabled
+                    >
+                        Show Meanings
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- GAME 2: MATCHING GAME -->
+
+            <div id="matchGame" class="game-content" hidden>
+
+                <div class="game-instructions">
+                    <h3>🔗 Vocabulary Matching Game</h3>
+                    <p>
+                        Click an English word, then click its
+                        correct Chinese meaning to draw a line.
+                    </p>
+                </div>
+
+                <div class="match-status">
+                    <span id="matchProgress">
+                        Matched: 0 / 5
+                    </span>
+
+                    <span id="matchHint">
+                        Select a word to begin.
+                    </span>
+                </div>
+
+                <div class="match-board" id="matchBoard">
+
+                    <!-- SVG lines are drawn here -->
+                    <svg
+                        id="matchLines"
+                        class="match-lines"
+                        aria-hidden="true"
+                    ></svg>
+
+                    <div class="match-column">
+                        <h3>English Words</h3>
+                        <div id="englishWords" class="match-list"></div>
+                    </div>
+
+                    <div class="match-column">
+                        <h3>Chinese Meanings</h3>
+                        <div id="chineseMeanings" class="match-list"></div>
+                    </div>
+
+                </div>
+
+                <div id="matchResult" class="match-result" aria-live="polite">
+                    Start a new round and match all five pairs!
+                </div>
+
+                <div class="game-buttons match-buttons">
+
+                    <button
+                        id="newMatchButton"
+                        class="primary-button"
+                        disabled
+                    >
+                        New Match Round
+                    </button>
+
+                    <button
+                        id="checkMatchButton"
+                        class="secondary-button"
+                        disabled
+                    >
+                        Check Answers
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        Classroom Learning Center
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
